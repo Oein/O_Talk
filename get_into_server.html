@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        input{
+            margin: 1%;
+            width: 98%;
+            height: 50px;
+            font-size: medium;
+            border-radius: 10px;
+            border: black;
+        }
+
+        button{
+            width: 100%;
+            height: 20%;
+            font-size: 50px;
+            border: none;
+            border-radius: 5px;
+            background-color: deepskyblue;
+        }
+
+        body{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <input id="server" placeholder="서버 ID를 입력하세요." />
+    <input type="password" id="pw" placeholder="서버 비밀번호를 입력하세요." />
+    <div style="color: white; margin-left: 1.3%;">( 잘못입력할 경우 원하는곳에 들어갈수 없습니다 , 입력하지 않을경우 비밀번호가 안걸린 서버로 접근합니다. )</div><p></p>
+    <input id="name" placeholder="서버 에서 사용할 닉네임을 입력하세요." /><p></p>
+    <button onclick="Go()">Go!</button><p>&nbsp;</p>
+
+    <script>
+        function Go(){
+            var input = document.getElementById("server");
+            if(input.value.replaceAll(" " , "").length == 0) {
+                alert("서버 ID를 채워주세요.");
+                return;
+            }
+
+            var input_n = document.getElementById("name");
+            if(input_n.value.replaceAll(" " , "").length == 0) {
+                alert("서버 에서 사용할 닉네임을 채워주세요.");
+                return;
+            }
+
+            var input_p = document.getElementById("pw").value;
+
+            location.href = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/server?S_id=" + input.value + "." + input_p + "&n=" + input_n.value;
+        }
+    </script>
+</body>
+</html>
